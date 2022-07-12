@@ -1,90 +1,37 @@
 <!doctype html><html lang="en-au"><head><meta charset="utf-8"><meta name="robots" content="index,nofollow,noarchive"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Password Generator</title>
-<meta name="description" content="Quick and simple generation of random passwords.">
+<title>css-framework.srva.au</title>
+<meta name="description" content="Simple CSS Framework to make website creation, quick and easy!">
 
 <style>
 /* Theme - just enter the Hue and Saturation of a base color. */
-:root{--Hue:320;--Sat:100%;}
+:root{--Hue:105;--Sat:55%;}
 </style>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/srva-au/css@main/srva.au.css?v=0.1" media="screen, projection">
 <script src="https://cdn.jsdelivr.net/gh/srva-au/css@main/srva.au.js"></script>
 
-<script>
-function makePass(){
-  chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
-  nums = '0123456789';
-  symbols = '!@#$%^&*()_-+=[]{}.|';
-  getid("symbols").checked ? (chars += symbols) : "";
-  getid("jnums").checked ? (chars = nums) : "";
-  length = getid("length").value;
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    password += chars.charAt(
-      Math.floor(Math.random() * chars.length)
-    );
-  }
-  getid("password").value = password;
-}
-function judge(){
-  result = getid("result");
-  if(getid("length").value > 19){
-    result.innerHTML="Password Quality is Excellent";
-    result.className = 'alertGreen';
-  }
-  else if(getid("length").value > 15){
-    result.innerHTML="Password Quality is OK";
-    result.className = 'alertGold';
-  }
-  else {result.innerHTML="Password Quality is poor!";result.className = 'alertRed'; }
-}
-function copyPass(){
-  getid("password").select();
-  document.execCommand("copy");
-  alert("Password Copied");
-}
-function shuffle(s) {
-  var arr = s.split('');
-  arr.sort(function() {
-    return 0.5 - Math.random();
-  });
-  s = arr.join('');
-  return s;
-}
-function makeNums(quantity, min, max){
-  const set = new Set()
-  while(set.size < quantity) {
-    set.add(Math.floor(Math.random() * (max - min + 1)) + min)
-  }
-  return set
-}
-</script>
-
 </head><body>
 <div id="srvaBox">
 
 <div id="brandmenu">
-<div id="brand" class="nowrap"><span class="nowrap brandfont6">password-generator.srva.au</span></div>
+<div id="brand" class="nowrap"><span class="nowrap brandfont7">css-framework.srva.au</span></div>
 </div>
 
 <div class="padLR">
   
-<div class="spacerV-10"></div>
-<div class="card pad-4 centerBox width-60">
-    <label for="length">Length: <input type="number" id="length" value="20" min="2" max="500"></label>
-    <label for="symbols">Include Symbols: <input type="checkbox" id="symbols"></label>
-    <label for="jnums">Just Numbers: <input type="checkbox" id="jnums"></label>
-  <button id="generate" onClick="makePass();judge();">Generate Password</button>
-  <br><br>
-  <label for="password">Password: <input type="text" id="password"> <button id="copy" onClick="copyPass();">Copy</button></label>
-  <div id="result" class="alertBW">Password Quality Indicator</div>
-</div>
-<div class="spacerV-20"></div>
-<div class="alertGreen">- Minimum length for a strong password is 20 characters.
-<br>- Numbers, letters, symbols don't matter. Length and randomness does.
-<br>- Never use same password. New Login New Password.
-<br>- Store your passwords in a text file and encrypt the file. Encrypted zip is available for free on all platforms. That way you only have to remember one password.</div>
+<div class="spacerV-5"></div>
+<h1>css-framework takes care of the CSS!</h1>
+<p><i>Page last updated 2022-07-12</i></p>
+<p>To build a website you need knowledge of basic HTML, CSS and a tiny bit of Javascript. css-framework takes care of the CSS (and that tiny bit of Javascript). Which just leaves the HTML which you can learn as you build that website.</p>
+<p>Firstly we are going to give you a template and once you have changed a bit of text your website is ready. No in-depth knowledge required. All you need is a text editor. If you are using Android, I recommend Acode from the Play Store. You can see how to use Acode at <a href="https://youtu.be/295uvfXY8Q4" target="_blank">https://youtu.be/295uvfXY8Q4</a></p>
+<p>The template is at <a href="https://css-framework.srva.au/template1.html" target="_blank">https://css-framework.srva.au/template1.html</a>. You can view it and see what it looks like. Click <a href="https://css-framework.srva.au/template1.txt" target="_blank">https://css-framework.srva.au/template1.txt</a> to view the code. You can copy and paste the whole code into a file called index.html (all websites start with a file called index.html). Edit the title and description in the head section then all the rest of the editing is in the body section.</p>
+<p>What about changing the color scheme? Simple, find the hue and saturation in the head and change the current values. A great color picker is at <a href="https://www.w3schools.com/colors/colors_picker.asp" target="_blank">https://www.w3schools.com/colors/colors_picker.asp</a>. Pink has a hue of 300 and saturation of 100%. Go on make your page pink.</p>
+<h2>Quick HTML Tutorial</h2>
+<p>HTML is a markup language. Essentially markup uses opening and closing tags to format text. In HTML the tags are formed using less than and greater than signs. So to create a top level header we use &lt;h1&gt;My First Header&lt;/h1&gt; - h stands for header and the 1 says its the biggest font header. h1 = biggest most important header. The closing tag uses a backslash to signify its a closing tag.</p>
+<p>So lets build a paragraph next &lt;p&gt;My First Paragraph&lt;/p&gt; - yes HTML is that easy.</p>
+<p>I recommend <a href="https://www.w3schools.com/html/html_intro.asp" target="_blank">https://www.w3schools.com/html/html_intro.asp</a> as a great place to learn about HTML.</p>
+
 </div></div>
 <audio id="audio" src="click.mp3" ></audio>
 </body></html>
