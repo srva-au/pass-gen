@@ -1,0 +1,4 @@
+Sitemap: https://password-generator.srva.au/sitemap.txt
+
+User-agent: *
+Crawl-Delay: 20

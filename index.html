@@ -1,0 +1,90 @@
+<!doctype html><html lang="en-au"><head><meta charset="utf-8"><meta name="robots" content="index,nofollow,noarchive"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Password Generator</title>
+<meta name="description" content="Quick and simple generation of random passwords.">
+
+<style>
+/* Theme - just enter the Hue and Saturation of a base color. */
+:root{--Hue:320;--Sat:100%;}
+</style>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/srva-au/css@main/srva.au.css?v=0.1" media="screen, projection">
+<script src="https://cdn.jsdelivr.net/gh/srva-au/css@main/srva.au.js"></script>
+
+<script>
+function makePass(){
+  chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+  nums = '0123456789';
+  symbols = '!@#$%^&*()_-+=[]{}.|';
+  getid("symbols").checked ? (chars += symbols) : "";
+  getid("jnums").checked ? (chars = nums) : "";
+  length = getid("length").value;
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += chars.charAt(
+      Math.floor(Math.random() * chars.length)
+    );
+  }
+  getid("password").value = password;
+}
+function judge(){
+  result = getid("result");
+  if(getid("length").value > 19){
+    result.innerHTML="Password Quality is Excellent";
+    result.className = 'alertGreen';
+  }
+  else if(getid("length").value > 15){
+    result.innerHTML="Password Quality is OK";
+    result.className = 'alertGold';
+  }
+  else {result.innerHTML="Password Quality is poor!";result.className = 'alertRed'; }
+}
+function copyPass(){
+  getid("password").select();
+  document.execCommand("copy");
+  alert("Password Copied");
+}
+function shuffle(s) {
+  var arr = s.split('');
+  arr.sort(function() {
+    return 0.5 - Math.random();
+  });
+  s = arr.join('');
+  return s;
+}
+function makeNums(quantity, min, max){
+  const set = new Set()
+  while(set.size < quantity) {
+    set.add(Math.floor(Math.random() * (max - min + 1)) + min)
+  }
+  return set
+}
+</script>
+
+</head><body>
+<div id="srvaBox">
+
+<div id="brandmenu">
+<div id="brand" class="nowrap"><span class="nowrap brandfont6">password-generator.srva.au</span></div>
+</div>
+
+<div class="padLR">
+  
+<div class="spacerV-10"></div>
+<div class="card pad-4 centerBox width-60">
+    <label for="length">Length: <input type="number" id="length" value="20" min="2" max="500"></label>
+    <label for="symbols">Include Symbols: <input type="checkbox" id="symbols"></label>
+    <label for="jnums">Just Numbers: <input type="checkbox" id="jnums"></label>
+  <button id="generate" onClick="makePass();judge();">Generate Password</button>
+  <br><br>
+  <label for="password">Password: <input type="text" id="password"> <button id="copy" onClick="copyPass();">Copy</button></label>
+  <div id="result" class="alertBW">Password Quality Indicator</div>
+</div>
+<div class="spacerV-20"></div>
+<div class="alertGreen">- Minimum length for a strong password is 20 characters.
+<br>- Numbers, letters, symbols don't matter. Length and randomness does.
+<br>- Never use same password. New Login New Password.
+<br>- Store your passwords in a text file and encrypt the file. Encrypted zip is available for free on all platforms. That way you only have to remember one password.</div>
+</div></div>
+<audio id="audio" src="click.mp3" ></audio>
+</body></html>
